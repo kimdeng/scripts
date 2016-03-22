@@ -1,0 +1,22 @@
+#!/usr/bin/expect -f
+
+set pwd p@ssw0rd
+
+set timeout 30
+
+
+
+spawn scp -rp /root/deluser.sh root@10.1.4.176:/ 
+
+sleep 10
+
+expect {
+
+          "(yes/no)?" {send "yes\r"}
+
+          "password:"   {send "$pwd\r"}
+
+}
+
+
+expect eof
