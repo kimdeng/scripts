@@ -2,21 +2,26 @@
 
 set pwd p@ssw0rd
 
-set timeout 30
+set timeout 20
 
+set file [lindex $argv 0]
 
+#for i in `ls /python`
 
-spawn scp -rp /root/deluser.sh root@10.1.4.176:/ 
+#do
 
-sleep 10
+spawn scp -rp $file root@10.1.4.222:/python
+
+sleep 5
 
 expect {
 
           "(yes/no)?" {send "yes\r"}
 
-          "password:"   {send "$pwd\r"}
+          "assword:"   {send "$pwd\r"}
 
 }
 
+#done
 
 expect eof
